@@ -1,0 +1,4 @@
+/* Global unused elements cleaned. Styles are controlled by index.css. */
+#root {
+  width: 100%;
+}
