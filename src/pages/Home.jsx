@@ -46,9 +46,10 @@ export default function Home() {
               </div>
             </div>
             <div className="hero-image">
-              <img src="https://jvcats.com/wp-content/uploads/2022/03/logo-blanco-copia-300x300.png" alt="JV Cats"
+              <img src="https://jvcats.com/wp-content/uploads/2022/03/LOGO-JVC-1-1.png" alt="JV Cats"
                 style={{ maxHeight: 320, filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.4))' }} />
             </div>
+
           </div>
         </div>
       </section>
