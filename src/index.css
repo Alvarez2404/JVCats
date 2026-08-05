@@ -732,6 +732,12 @@ h1, h2, h3, h4, h5, h6 {
   padding: 6px 0;
 }
 
+.navbar-top .container {
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
 .navbar-top a {
   color: rgba(255,255,255,0.85);
   transition: var(--jv-transition-fast);
@@ -782,8 +788,9 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-actions {
   display: flex;
   align-items: center;
-  gap: var(--jv-space-md);
+  gap: 8px;
 }
+
 
 .navbar-cart-btn {
   position: relative;
@@ -1575,9 +1582,12 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   .container { padding: 0 var(--jv-space-sm); }
-  .navbar-top { font-size: 0.75rem; }
+  .navbar-top { font-size: 0.72rem; }
+  .navbar-logo img { height: 34px; }
+  .navbar-user-btn { padding: 6px 10px; font-size: 0.78rem; }
+  .navbar-cart-btn { width: 38px; height: 38px; }
   .navbar-links { display: none; }
-  .navbar-mobile-toggle { display: flex; }
+  .navbar-mobile-toggle { display: flex; padding: 6px 10px; font-size: 0.85rem; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
@@ -1602,6 +1612,7 @@ h1, h2, h3, h4, h5, h6 {
   .process-steps { flex-wrap: wrap; justify-content: center; gap: 8px; }
   .process-connector { width: 20px; }
 }
+
 
 @media (max-width: 480px) {
   .products-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
