@@ -59,18 +59,22 @@ export default function Store() {
       </div>
 
       <div className="container page-section">
-        {/* Filters */}
         <div className="store-filters" style={{ marginBottom: 32 }}>
-          {categories.map(cat => (
-            <button key={cat} className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
-              onClick={() => handleCategoryChange(cat)}>
-              {cat}
-            </button>
-          ))}
+          <select 
+            className="form-select" 
+            value={activeCategory} 
+            onChange={e => handleCategoryChange(e.target.value)}
+            style={{ width: 'auto', minWidth: 200 }}
+          >
+            <option value="Todos">Todos los productos</option>
+            <option value="Arenas">Arenas</option>
+            <option value="Comida">Comida</option>
+          </select>
           <div className="store-search">
             <input type="text" placeholder="Buscar productos..." value={search}
               onChange={e => setSearch(e.target.value)} style={{ paddingLeft: '16px' }} />
           </div>
+
           <select className="form-select" value={sort} onChange={e => setSort(e.target.value)}
             style={{ width: 'auto', minWidth: 180 }}>
 

@@ -913,8 +913,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .admin-sidebar-logo img {
   height: 38px;
-  filter: brightness(0) invert(1);
 }
+
 
 .admin-nav-item {
   display: flex;

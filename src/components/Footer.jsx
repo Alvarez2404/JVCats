@@ -7,7 +7,8 @@ export default function Footer() {
         <div className="grid-4" style={{ gap: '40px' }}>
           <div>
             <img src="https://jvcats.com/wp-content/uploads/2022/03/LOGO-JVC-1-1.png" alt="JV Cats"
-              style={{ height: 42, filter: 'brightness(0) invert(1)', marginBottom: 16 }} />
+              style={{ height: 42, marginBottom: 16 }} />
+
             <p style={{ fontSize: '0.88rem', lineHeight: 1.7 }}>
               Tu mascota merece lo mejor, nosotros lo creamos. Productos premium para gatos en Colombia.
             </p>
