@@ -39,10 +39,22 @@ export default function Footer() {
           </div>
 
         </div>
-        <div className="footer-bottom">
+        <div className="footer-bottom" style={{ display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'center' }}>
           <p>© {new Date().getFullYear()} JV Cats Colombia. Todos los derechos reservados.</p>
+          <p style={{ fontSize: '0.8rem', color: 'rgba(255, 255, 255, 0.6)' }}>
+            Desarrollada y creada por{' '}
+            <a 
+              href="https://smartlitcompany.com" 
+              target="_blank" 
+              rel="noreferrer"
+              style={{ color: 'var(--jv-accent)', fontWeight: 600, textDecoration: 'underline' }}
+            >
+              smartlitcompany.com
+            </a>
+          </p>
         </div>
       </div>
     </footer>
   );
 }
+
