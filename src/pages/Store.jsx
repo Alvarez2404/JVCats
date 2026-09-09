@@ -48,36 +48,49 @@ export default function Store() {
   };
 
   return (
-    <div>
+    <div className="store-page-wrapper">
       <div className="store-header">
         <div className="container">
+          <span className="store-eyebrow">Catálogo Oficial JV Cats</span>
           <h1>Nuestra Tienda</h1>
-          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem' }}>
-            {filtered.length} producto{filtered.length !== 1 ? 's' : ''} disponible{filtered.length !== 1 ? 's' : ''}
+          <p>
+            {filtered.length} producto{filtered.length !== 1 ? 's' : ''} disponible{filtered.length !== 1 ? 's' : ''} para consentir a tu gato
           </p>
         </div>
       </div>
 
-      <div className="container page-section">
+      <div className="container page-section store-body-section">
         <div className="store-filters" style={{ marginBottom: 32 }}>
           <select 
-            className="form-select" 
+            className="form-select store-select" 
             value={activeCategory} 
             onChange={e => handleCategoryChange(e.target.value)}
             style={{ width: 'auto', minWidth: 200 }}
           >
             <option value="Todos">Todos los productos</option>
-            <option value="Arenas">Arenas</option>
-            <option value="Comida">Comida</option>
+            <option value="Arenas">Arenas Sanitarias</option>
+            <option value="Comida">Alimentos y Nuggets</option>
           </select>
+
           <div className="store-search">
-            <input type="text" placeholder="Buscar productos..." value={search}
-              onChange={e => setSearch(e.target.value)} style={{ paddingLeft: '16px' }} />
+            <svg className="store-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              type="text" 
+              placeholder="Buscar productos por nombre, aroma..." 
+              value={search}
+              onChange={e => setSearch(e.target.value)} 
+            />
           </div>
 
-          <select className="form-select" value={sort} onChange={e => setSort(e.target.value)}
-            style={{ width: 'auto', minWidth: 180 }}>
-
+          <select 
+            className="form-select store-select" 
+            value={sort} 
+            onChange={e => setSort(e.target.value)}
+            style={{ width: 'auto', minWidth: 180 }}
+          >
             <option value="default">Ordenar por</option>
             <option value="price-asc">Precio: menor a mayor</option>
             <option value="price-desc">Precio: mayor a menor</option>
@@ -92,11 +105,16 @@ export default function Store() {
           </div>
         ) : (
           <div className="empty-state">
-            <div className="empty-icon">🔍</div>
+            <div className="empty-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--jv-primary)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </div>
             <h3>No encontramos productos</h3>
             <p>Intenta con otra búsqueda o categoría</p>
             <button className="btn btn-primary btn-sm" onClick={() => { setSearch(''); setActiveCategory('Todos'); }}>
-              Ver Todos
+              Ver Todos los Productos
             </button>
           </div>
         )}

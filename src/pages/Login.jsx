@@ -33,7 +33,7 @@ export default function Login() {
         <h2>Bienvenido de vuelta</h2>
         <p className="auth-subtitle">Inicia sesión para acceder a tu cuenta</p>
 
-        {error && <div className="auth-error">⚠️ {error}</div>}
+        {error && <div className="auth-error">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">

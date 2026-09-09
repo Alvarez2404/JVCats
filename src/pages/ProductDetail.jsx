@@ -18,7 +18,13 @@ export default function ProductDetail() {
     return (
       <div className="container page-section">
         <div className="empty-state">
-          <div className="empty-icon">❌</div>
+          <div className="empty-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="15" y1="9" x2="9" y2="15"></line>
+              <line x1="9" y1="9" x2="15" y2="15"></line>
+            </svg>
+          </div>
           <h3>Producto no encontrado</h3>
           <Link to="/tienda" className="btn btn-primary">Volver a la Tienda</Link>
         </div>
@@ -115,7 +121,7 @@ export default function ProductDetail() {
       )}
 
       {/* Toast */}
-      {added && <div className="toast success">✅ Producto agregado al carrito</div>}
+      {added && <div className="toast success">Producto agregado al carrito</div>}
     </div>
   );
 }

@@ -45,7 +45,7 @@ export default function Register() {
         <h2>Crea tu cuenta</h2>
         <p className="auth-subtitle">Regístrate para comprar los mejores productos para tu gato</p>
 
-        {error && <div className="auth-error">⚠️ {error}</div>}
+        {error && <div className="auth-error">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <div className="form-group">

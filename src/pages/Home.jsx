@@ -20,21 +20,45 @@ export default function Home() {
 
   return (
     <div className="home-wrapper">
-      {/* ─── PURE CSS DYNAMIC HERO (NO PHOTOS) ─── */}
+      {/* ─── PURE CSS DYNAMIC HERO (NO PHOTOS, NO EMOJIS) ─── */}
       <section className="hero-dynamic">
         {/* Animated background ambient glow orbs */}
         <div className="hd-orb hd-orb--1" />
         <div className="hd-orb hd-orb--2" />
         <div className="hd-orb hd-orb--3" />
 
-        {/* Floating animated sparkles & paw icons */}
+        {/* Floating animated sparkles and shapes (Clean SVGs, NO EMOJIS) */}
         <div className="hd-particles" aria-hidden="true">
-          <span className="hd-particle hd-p1">🐾</span>
-          <span className="hd-particle hd-p2">✨</span>
-          <span className="hd-particle hd-p3">🐾</span>
-          <span className="hd-particle hd-p4">⭐</span>
-          <span className="hd-particle hd-p5">🐾</span>
-          <span className="hd-particle hd-p6">✨</span>
+          <span className="hd-particle hd-p1">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)">
+              <circle cx="12" cy="12" r="6" />
+            </svg>
+          </span>
+          <span className="hd-particle hd-p2">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="rgba(250,194,13,0.5)">
+              <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+            </svg>
+          </span>
+          <span className="hd-particle hd-p3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)">
+              <circle cx="12" cy="12" r="5" />
+            </svg>
+          </span>
+          <span className="hd-particle hd-p4">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="rgba(250,194,13,0.45)">
+              <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+            </svg>
+          </span>
+          <span className="hd-particle hd-p5">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,255,255,0.35)">
+              <circle cx="12" cy="12" r="5" />
+            </svg>
+          </span>
+          <span className="hd-particle hd-p6">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="rgba(250,194,13,0.4)">
+              <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+            </svg>
+          </span>
         </div>
 
         <div className="container hd-container">
@@ -43,7 +67,7 @@ export default function Home() {
             {/* Live status badge */}
             <div className="hd-badge">
               <span className="hd-badge-pulse" />
-              <span className="hd-badge-text">🐾 DISTRIBUIDOR AUTORIZADO ONLINE · COLOMBIA</span>
+              <span className="hd-badge-text">DISTRIBUIDOR AUTORIZADO ONLINE · COLOMBIA</span>
             </div>
 
             <h1 className="hd-title">
@@ -52,20 +76,26 @@ export default function Home() {
             </h1>
 
             <p className="hd-subtitle">
-              Arenas sanitarias de fórmula premium, nuggets rellenos nutritivos y snacks irresistibles.
+              Arenas sanitarias de fórmula premium, nuggets rellenos nutritivos y snacks funcionales.
               La mejor calidad para el bienestar de tu mascota, con envíos rápidos y seguros a toda Colombia.
             </p>
 
-            {/* Main Action Buttons */}
+            {/* Main Action Buttons (Clean text & SVG icons) */}
             <div className="hd-actions">
               <Link to="/tienda" className="hd-btn hd-btn--primary" id="hero-btn-tienda">
-                <span className="hd-btn-icon">🛒</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
                 <span>Explorar Tienda</span>
                 <span className="hd-btn-arrow">→</span>
               </Link>
 
               <Link to="/tienda?cat=Arenas" className="hd-btn hd-btn--secondary" id="hero-btn-arenas">
-                <span className="hd-btn-icon">🐱</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                </svg>
                 <span>Ver Arenas Sanitarias</span>
               </Link>
 
@@ -76,7 +106,9 @@ export default function Home() {
                 className="hd-btn hd-btn--whatsapp"
                 id="hero-btn-whatsapp"
               >
-                <span className="hd-btn-icon">💬</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.957-1.401A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+                </svg>
                 <span>Asesoría WhatsApp</span>
               </a>
             </div>
@@ -86,13 +118,13 @@ export default function Home() {
               <span className="hd-quick-label">Accesos rápidos:</span>
               <div className="hd-chips-list">
                 <Link to="/tienda?cat=Arenas" className="hd-chip">
-                  🐾 Arenas (16 Variedades)
+                  Arenas (16 Variedades)
                 </Link>
                 <Link to="/tienda?cat=Comida" className="hd-chip">
-                  🍲 Alimentos Secos
+                  Alimentos Secos
                 </Link>
                 <Link to="/tienda" className="hd-chip">
-                  🐟 Snacks Funcionales
+                  Snacks Funcionales
                 </Link>
               </div>
             </div>
@@ -132,9 +164,13 @@ export default function Home() {
                 className="hd-main-logo"
               />
 
-              {/* Floating Dynamic Badges */}
+              {/* Floating Dynamic Badges (Clean SVG Icons) */}
               <div className="hd-float-card hd-float-card--top">
-                <span className="hd-float-icon">⭐</span>
+                <span className="hd-float-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="#fac20d">
+                    <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+                  </svg>
+                </span>
                 <div>
                   <strong>Distribuidor Oficial</strong>
                   <small>Garantía de fábrica</small>
@@ -142,7 +178,14 @@ export default function Home() {
               </div>
 
               <div className="hd-float-card hd-float-card--left">
-                <span className="hd-float-icon">🚚</span>
+                <span className="hd-float-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e50601" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="1" y="3" width="15" height="13"></rect>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                  </svg>
+                </span>
                 <div>
                   <strong>Envíos Nacionales</strong>
                   <small>A todo el país</small>
@@ -150,9 +193,13 @@ export default function Home() {
               </div>
 
               <div className="hd-float-card hd-float-card--right">
-                <span className="hd-float-icon">🐱</span>
+                <span className="hd-float-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f27025" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </span>
                 <div>
-                  <strong>100% Felices</strong>
+                  <strong>Bienestar Total</strong>
                   <small>Máximo control de olor</small>
                 </div>
               </div>
@@ -171,22 +218,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── DYNAMIC RUNNING MARQUEE TICKER ─── */}
+      {/* ─── DYNAMIC RUNNING MARQUEE TICKER (NO EMOJIS) ─── */}
       <div className="marquee-bar">
         <div className="marquee-track">
           {[1, 2].map((group) => (
             <div key={group} className="marquee-content">
-              <span>🚚 ENVÍOS A TODA COLOMBIA</span>
+              <span>ENVÍOS A TODA COLOMBIA</span>
               <span className="marquee-sep">•</span>
-              <span>🐾 DISTRIBUIDOR AUTORIZADO JVCATS</span>
+              <span>DISTRIBUIDOR AUTORIZADO JVCATS</span>
               <span className="marquee-sep">•</span>
-              <span>⭐ ARENAS SANITARIAS PREMIUM 100% NATURAL</span>
+              <span>ARENAS SANITARIAS PREMIUM 100% NATURAL</span>
               <span className="marquee-sep">•</span>
-              <span>💳 PAGO SEGURO CON NEQUI Y PSE</span>
+              <span>PAGO SEGURO CON NEQUI Y PSE</span>
               <span className="marquee-sep">•</span>
-              <span>✨ MÁXIMO CONTROL DE OLOR Y AGLOMERACIÓN</span>
+              <span>MÁXIMO CONTROL DE OLOR Y AGLOMERACIÓN</span>
               <span className="marquee-sep">•</span>
-              <span>🐱 TODO PARA EL CUIDADO DE TU GATO</span>
+              <span>CALIDAD GARANTIZADA PARA TU MASCOTA</span>
               <span className="marquee-sep">•</span>
             </div>
           ))}
@@ -202,7 +249,7 @@ export default function Home() {
                 icon: (
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="1" y="3" width="15" height="13"></rect>
-                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                    <polygon points="16 8 20 8 23 11 23 16 16 16 8"></polygon>
                     <circle cx="5.5" cy="18.5" r="2.5"></circle>
                     <circle cx="18.5" cy="18.5" r="2.5"></circle>
                   </svg>
@@ -250,7 +297,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── CATEGORIES WITH AI PRODUCT BANNERS (KEPT AS REQUESTED) ─── */}
+      {/* ─── CATEGORIES WITH AI PRODUCT BANNERS (KEPT, NO EMOJIS) ─── */}
       <section className="page-section category-showcase-section">
         <div className="container">
           <div className="section-header">
@@ -264,7 +311,7 @@ export default function Home() {
             {/* Card 1: Arenas */}
             <Link to="/tienda?cat=Arenas" className="what-img-card" id="cat-arena-btn">
               <img src="/banner-arena.jpg" alt="Arenas Sanitarias JVCats – 16 variedades" />
-              <div className="what-card-badge">🐾 16 Variedades</div>
+              <div className="what-card-badge">16 Variedades</div>
               <div className="what-img-overlay">
                 <div className="what-overlay-text">
                   <h3>Arenas Sanitarias</h3>
@@ -277,7 +324,7 @@ export default function Home() {
             {/* Card 2: Alimentos */}
             <Link to="/tienda?cat=Comida" className="what-img-card" id="cat-food-btn">
               <img src="/banner-alimentos.jpg" alt="Alimentos JVCats – Nuggets rellenos de pollo" />
-              <div className="what-card-badge">🍲 Nutrición Completa</div>
+              <div className="what-card-badge">Nutrición Completa</div>
               <div className="what-img-overlay">
                 <div className="what-overlay-text">
                   <h3>Alimentos Secos</h3>
@@ -290,7 +337,7 @@ export default function Home() {
             {/* Card 3: Snacks */}
             <Link to="/tienda" className="what-img-card" id="cat-snacks-btn">
               <img src="/banner-snacks.jpg" alt="Snacks funcionales JVCats – Control de bolas de pelo" />
-              <div className="what-card-badge">✨ Snacks Funcionales</div>
+              <div className="what-card-badge">Snacks Funcionales</div>
               <div className="what-img-overlay">
                 <div className="what-overlay-text">
                   <h3>Snacks & Premios</h3>
@@ -303,7 +350,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── DYNAMIC FEATURED PRODUCTS WITH CATEGORY TABS ─── */}
+      {/* ─── DYNAMIC FEATURED PRODUCTS WITH CATEGORY TABS (NO EMOJIS) ─── */}
       <section className="page-section products-section">
         <div className="container">
           <div className="section-header">
@@ -321,10 +368,10 @@ export default function Home() {
                 className={`product-tab ${activeTab === tab ? 'product-tab--active' : ''}`}
                 onClick={() => setActiveTab(tab)}
               >
-                {tab === 'Todos' && '⭐ Todos'}
-                {tab === 'Arenas' && '🐾 Arenas'}
-                {tab === 'Comida' && '🍲 Alimentos'}
-                {tab === 'Snacks' && '🐟 Snacks'}
+                {tab === 'Todos' && 'Todos'}
+                {tab === 'Arenas' && 'Arenas'}
+                {tab === 'Comida' && 'Alimentos'}
+                {tab === 'Snacks' && 'Snacks'}
               </button>
             ))}
           </div>
@@ -343,7 +390,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── WHO WE ARE BAND (FEATURING CLEAN TRANSPARENT LOGO) ─── */}
+      {/* ─── WHO WE ARE BAND (FEATURING CLEAN TRANSPARENT LOGO, NO EMOJIS) ─── */}
       <section className="who-band">
         <div className="container">
           <div className="who-inner">
@@ -360,15 +407,27 @@ export default function Home() {
 
               <div className="who-bullets">
                 <div className="who-bullet-item">
-                  <span className="who-bullet-icon">🛡️</span>
+                  <span className="who-bullet-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fac20d" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                  </span>
                   <span>100% Producto Auténtico JVCats</span>
                 </div>
                 <div className="who-bullet-item">
-                  <span className="who-bullet-icon">⚡</span>
+                  <span className="who-bullet-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fac20d" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                  </span>
                   <span>Despachos Rápidos con Guía de Rastreo</span>
                 </div>
                 <div className="who-bullet-item">
-                  <span className="who-bullet-icon">❤️</span>
+                  <span className="who-bullet-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fac20d" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </span>
                   <span>Atención Personalizada para Familias Gatunas</span>
                 </div>
               </div>
@@ -391,7 +450,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── TESTIMONIALS ─── */}
+      {/* ─── TESTIMONIALS (SVG STARS, NO EMOJIS) ─── */}
       <section className="page-section testimonials-section">
         <div className="container">
           <div className="section-header">
@@ -406,28 +465,31 @@ export default function Home() {
               {
                 name: 'María F.',
                 city: 'Bogotá D.C.',
-                text: 'Las arenas de JV Cats son insuperables. El aroma a lavanda neutraliza todo y mi gata Luna se siente cómoda de inmediato. ¡Llegó al día siguiente!',
-                rating: '⭐⭐⭐⭐⭐',
+                text: 'Las arenas de JV Cats son insuperables. El aroma a lavanda neutraliza todo y mi gata Luna se siente cómoda de inmediato. Llegó al día siguiente.',
               },
               {
                 name: 'Carlos M.',
                 city: 'Medellín, Antioquia',
                 text: 'Excelente calidad en los nuggets rellenos. Mis dos gatos los devoran y su pelaje está mucho más brillante. Compra 100% recomendada.',
-                rating: '⭐⭐⭐⭐⭐',
               },
               {
                 name: 'Valentina R.',
                 city: 'Cali, Valle del Cauca',
                 text: 'Pagar con Nequi fue súper fácil y seguro. El paquete llegó muy bien embalado. Ahora soy clienta fija para la arena de 20kg.',
-                rating: '⭐⭐⭐⭐⭐',
               },
             ].map((t, i) => (
               <div key={i} className="testimonial-card">
-                <div className="testimonial-stars">{t.rating}</div>
+                <div className="testimonial-stars-svg" style={{ display: 'flex', gap: 4, marginBottom: 14 }}>
+                  {[...Array(5)].map((_, s) => (
+                    <svg key={s} width="18" height="18" viewBox="0 0 24 24" fill="#fac20d">
+                      <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
+                    </svg>
+                  ))}
+                </div>
                 <p className="testimonial-text">"{t.text}"</p>
                 <div className="testimonial-author">
                   <div className="testimonial-name">{t.name}</div>
-                  <div className="testimonial-city">📍 {t.city}</div>
+                  <div className="testimonial-city">{t.city}</div>
                 </div>
               </div>
             ))}
@@ -438,7 +500,7 @@ export default function Home() {
       {/* ─── CTA ─── */}
       <section className="page-section cta-section">
         <div className="container" style={{ textAlign: 'center' }}>
-          <div className="cta-badge">🐱 DISTRIBUIDOR AUTORIZADO JVCATS</div>
+          <div className="cta-badge">DISTRIBUIDOR AUTORIZADO JVCATS</div>
           <h2 className="cta-title">¿Listo para consentir a tu gato?</h2>
           <p className="cta-sub">
             Crea tu cuenta en minutos o explora nuestra tienda online.<br />
@@ -455,20 +517,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── FLOATING WHATSAPP BUTTON ─── */}
+      {/* ─── FLOATING WHATSAPP BUTTON (NO EMOJIS) ─── */}
       <a
         href="https://wa.me/573182164552?text=%C2%A1Hola!%20Vengo%20de%20jvcatslatienda.com%20y%20quiero%20hacer%20un%20pedido"
         target="_blank"
         rel="noreferrer"
         className="floating-whatsapp"
-        title="¿Tienes preguntas? Escríbenos por WhatsApp"
+        title="Escríbenos por WhatsApp"
         id="floating-whatsapp-btn"
       >
         <span className="wa-pulse" />
         <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
           <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.957-1.401A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
         </svg>
-        <span className="wa-tooltip">¿Dudas? ¡Escríbenos!</span>
+        <span className="wa-tooltip">Atención WhatsApp</span>
       </a>
     </div>
   );

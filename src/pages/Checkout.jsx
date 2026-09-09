@@ -29,7 +29,12 @@ export default function Checkout() {
     return (
       <div className="container page-section">
         <div className="empty-state">
-          <div className="empty-icon">🔒</div>
+          <div className="empty-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+          </div>
           <h3>Inicia sesión para continuar</h3>
           <p>Necesitas una cuenta para realizar tu compra</p>
           <Link to="/login" className="btn btn-primary">Iniciar Sesión</Link>
@@ -42,7 +47,13 @@ export default function Checkout() {
     return (
       <div className="container page-section">
         <div className="empty-state">
-          <div className="empty-icon">🛒</div>
+          <div className="empty-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+          </div>
           <h3>Tu carrito está vacío</h3>
           <Link to="/tienda" className="btn btn-primary">Ir a la Tienda</Link>
         </div>

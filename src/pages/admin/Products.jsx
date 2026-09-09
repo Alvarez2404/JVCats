@@ -35,7 +35,7 @@ export default function Products() {
     });
     setProducts(updated);
     setEditing(null);
-    setToast('✅ Producto actualizado correctamente');
+    setToast('Producto actualizado correctamente');
     setTimeout(() => setToast(''), 2500);
   };
 
