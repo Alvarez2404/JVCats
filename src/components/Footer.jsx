@@ -36,7 +36,7 @@ export default function Footer() {
               <a href="tel:3182164552">Teléfono: 318 216 4552</a>
               <a href="mailto:contacto@jvcatslatienda.com">contacto@jvcatslatienda.com</a>
               <a href="https://www.instagram.com/jvcatslatienda/" target="_blank" rel="noreferrer">Instagram: @jvcatslatienda</a>
-              <a href="https://www.facebook.com/jvcatslatienda" target="_blank" rel="noreferrer">Facebook: jvcatslatienda</a>
+              <a href="https://www.facebook.com/share/1Gzwkh2ueM/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Facebook: jvcatslatienda</a>
             </div>
           </div>
 

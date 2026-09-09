@@ -73,7 +73,7 @@ export default function ComingSoonModal() {
             @jvcatslatienda
           </a>
           <a
-            href="https://www.facebook.com/jvcatslatienda"
+            href="https://www.facebook.com/share/1Gzwkh2ueM/?mibextid=wwXIfr"
             target="_blank"
             rel="noreferrer"
             className="cs-social-btn cs-social-btn--fb"

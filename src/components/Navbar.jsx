@@ -32,7 +32,7 @@ export default function Navbar() {
             </div>
             <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
               <a href="https://www.instagram.com/jvcatslatienda/" target="_blank" rel="noreferrer">Instagram</a>
-              <a href="https://www.facebook.com/jvcatslatienda" target="_blank" rel="noreferrer">Facebook</a>
+              <a href="https://www.facebook.com/share/1Gzwkh2ueM/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Facebook</a>
             </div>
           </div>
         </div>
