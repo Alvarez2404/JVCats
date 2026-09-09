@@ -47,7 +47,7 @@ export default function ProductDetail() {
       <div className="product-detail">
         <div className="product-detail-image animate-fadeIn">
           <img src={product.image} alt={product.name}
-            onError={(e) => { e.target.src = 'https://jvcats.com/wp-content/uploads/2022/03/logo-blanco-copia-300x300.png'; }} />
+            onError={(e) => { e.target.src = '/logo-jvcats.png'; }} />
         </div>
         <div className="product-detail-info animate-slideUp">
           <span className="badge badge-primary" style={{ marginBottom: 12 }}>{product.category}</span>

@@ -28,7 +28,7 @@ export default function Login() {
     <div className="auth-page">
       <div className="auth-card">
         <div className="auth-logo">
-          <img src="https://jvcats.com/wp-content/uploads/2022/03/LOGO-JVC-1-1.png" alt="JV Cats" />
+          <img src="/logo-jvcats.png" alt="JV Cats La Tienda" />
         </div>
         <h2>Bienvenido de vuelta</h2>
         <p className="auth-subtitle">Inicia sesión para acceder a tu cuenta</p>

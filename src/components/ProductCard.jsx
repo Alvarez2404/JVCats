@@ -14,7 +14,7 @@ export default function ProductCard({ product }) {
             <span className="product-badge" style={{ background: '#EF4444' }}>Agotado</span>
           )}
           <img src={product.image} alt={product.name}
-            onError={(e) => { e.target.src = 'https://jvcats.com/wp-content/uploads/2022/03/logo-blanco-copia-300x300.png'; }} />
+            onError={(e) => { e.target.src = '/logo-jvcats.png'; }} />
           {product.stock > 0 && (
             <div className="product-quick-add">
               <button className="btn btn-accent btn-sm" onClick={(e) => { e.preventDefault(); addToCart(product); }}>

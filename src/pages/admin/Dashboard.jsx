@@ -59,7 +59,7 @@ export default function Dashboard() {
       <aside className={`admin-sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="admin-sidebar-logo">
           <Link to="/" onClick={() => setSidebarOpen(false)}>
-            <img src="https://jvcats.com/wp-content/uploads/2022/03/LOGO-JVC-1-1.png" alt="JV Cats" />
+            <img src="/logo-jvcats.png" alt="JV Cats La Tienda" />
           </Link>
           <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.35)', marginTop: 8, letterSpacing: '0.05em' }}>PANEL DE ADMINISTRACIÓN</div>
         </div>

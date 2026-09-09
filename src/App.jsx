@@ -14,6 +14,7 @@ import orders from './data/orders';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProtectedRoute from './components/ProtectedRoute';
+import ComingSoonModal from './components/ComingSoonModal';
 
 // Pages
 import Home from './pages/Home';
@@ -77,6 +78,7 @@ export default function App() {
         <CartProvider>
           <Router>
             <ScrollToTop />
+            <ComingSoonModal />
             <LayoutWrapper>
               <Routes>
                 {/* Public Routes */}

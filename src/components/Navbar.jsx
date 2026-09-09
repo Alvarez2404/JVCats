@@ -31,8 +31,8 @@ export default function Navbar() {
               <a href="mailto:contacto@jvcats.com">Email: contacto@jvcats.com</a>
             </div>
             <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-              <a href="https://www.instagram.com/jvcats_agricola/" target="_blank" rel="noreferrer">Instagram</a>
-              <a href="https://www.facebook.com/people/Jvcats/100063583298653/" target="_blank" rel="noreferrer">Facebook</a>
+              <a href="https://www.instagram.com/jvcatslatienda/" target="_blank" rel="noreferrer">Instagram</a>
+              <a href="https://www.facebook.com/jvcatslatienda" target="_blank" rel="noreferrer">Facebook</a>
             </div>
           </div>
         </div>
@@ -41,7 +41,7 @@ export default function Navbar() {
           <div className="container flex-between">
             <div style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
               <Link to="/" className="navbar-logo">
-                <img src="https://jvcats.com/wp-content/uploads/2022/03/LOGO-JVC-1-1.png" alt="JV Cats" />
+                <img src="/logo-jvcats.png" alt="JV Cats La Tienda" />
               </Link>
               <div className="navbar-links">
                 <Link to="/" className={isActive('/')}>Inicio</Link>
@@ -113,7 +113,7 @@ export default function Navbar() {
           <div className="mobile-nav-overlay" onClick={() => setMobileOpen(false)} />
           <div className="mobile-nav">
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 24 }}>
-              <img src="https://jvcats.com/wp-content/uploads/2022/03/LOGO-JVC-1-1.png" alt="JV Cats" style={{ height: 36 }} />
+              <img src="/logo-jvcats.png" alt="JV Cats La Tienda" style={{ height: 48 }} />
               <button onClick={() => setMobileOpen(false)} style={{ fontSize: '1.4rem' }}>Cerrar</button>
             </div>
             <Link to="/" onClick={() => setMobileOpen(false)} className={isActive('/')}>Inicio</Link>

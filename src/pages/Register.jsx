@@ -40,7 +40,7 @@ export default function Register() {
     <div className="auth-page">
       <div className="auth-card" style={{ maxWidth: 500 }}>
         <div className="auth-logo">
-          <img src="https://jvcats.com/wp-content/uploads/2022/03/LOGO-JVC-1-1.png" alt="JV Cats" />
+          <img src="/logo-jvcats.png" alt="JV Cats La Tienda" />
         </div>
         <h2>Crea tu cuenta</h2>
         <p className="auth-subtitle">Regístrate para comprar los mejores productos para tu gato</p>
