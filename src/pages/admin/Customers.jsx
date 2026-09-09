@@ -47,7 +47,7 @@ export default function Customers() {
                   {formatShortDate(u.registeredAt)}
                 </td>
                 <td>
-                  <span className="badge badge-info">{getCustomerOrders(u.id)}</span>
+                  <span className="badge badge-primary">{getCustomerOrders(u.id)}</span>
                 </td>
                 <td style={{ fontWeight: 700 }}>{formatCOP(u.totalPurchases || 0)}</td>
               </tr>

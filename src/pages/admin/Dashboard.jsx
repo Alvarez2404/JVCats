@@ -61,7 +61,7 @@ export default function Dashboard() {
           <Link to="/" onClick={() => setSidebarOpen(false)}>
             <img src="/logo-jvcats.png" alt="JV Cats La Tienda" />
           </Link>
-          <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.35)', marginTop: 8, letterSpacing: '0.05em' }}>PANEL DE ADMINISTRACIÓN</div>
+          <div style={{ fontSize: '0.72rem', color: '#fac20d', fontWeight: 700, marginTop: 8, letterSpacing: '0.08em' }}>PANEL DE ADMINISTRACIÓN</div>
         </div>
 
         <nav style={{ flex: 1 }}>
@@ -73,17 +73,16 @@ export default function Dashboard() {
           ))}
         </nav>
 
-
-        <div style={{ padding: '16px 24px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-          <div style={{ fontSize: '0.82rem', color: 'rgba(255,255,255,0.5)', marginBottom: 4 }}>
+        <div style={{ padding: '16px 24px', borderTop: '1px solid rgba(242, 112, 37, 0.2)' }}>
+          <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.6)', marginBottom: 4 }}>
             Sesión activa
           </div>
-          <div style={{ fontSize: '0.88rem', fontWeight: 600 }}>{user?.name}</div>
-          <Link to="/" style={{ display: 'block', marginTop: 12, fontSize: '0.82rem', color: 'rgba(255,255,255,0.5)' }}>
+          <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#ffffff' }}>{user?.name}</div>
+          <Link to="/" style={{ display: 'inline-block', marginTop: 12, fontSize: '0.82rem', color: '#fac20d', fontWeight: 600 }}>
             ← Volver a la tienda
           </Link>
           <button onClick={() => { logout(); navigate('/'); }}
-            style={{ marginTop: 8, fontSize: '0.82rem', color: '#EF4444' }}>
+            style={{ display: 'block', marginTop: 8, fontSize: '0.82rem', color: '#EF4444', fontWeight: 600 }}>
             Cerrar Sesión
           </button>
         </div>
@@ -134,7 +133,9 @@ export default function Dashboard() {
                       <div className="bar-value">{qty}</div>
                       <div className="bar" style={{
                         height: `${(qty / maxSales) * 100}%`,
-                        background: `hsl(${200 + i * 25}, 65%, ${50 + i * 5}%)`
+                        background: 'linear-gradient(180deg, #fac20d 0%, #f27025 45%, #e50601 100%)',
+                        borderRadius: '6px 6px 0 0',
+                        boxShadow: '0 4px 12px rgba(229, 6, 1, 0.2)'
                       }} />
                       <div className="bar-label" style={{ maxWidth: 80 }}>{name.split(' ').slice(0, 2).join(' ')}</div>
                     </div>

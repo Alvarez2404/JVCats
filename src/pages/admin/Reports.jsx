@@ -169,7 +169,7 @@ export default function Reports() {
                   <div style={{
                     height: '100%',
                     width: `${(rev / totalRevenue) * 100}%`,
-                    background: cat === 'Arenas' ? 'linear-gradient(90deg, #3B82F6, #60A5FA)' : 'linear-gradient(90deg, #F59E0B, #FBBF24)',
+                    background: cat === 'Arenas' ? 'linear-gradient(90deg, #e50601, #f27025)' : 'linear-gradient(90deg, #f27025, #fac20d)',
                     borderRadius: 6
                   }} />
                 </div>
@@ -203,9 +203,9 @@ export default function Reports() {
               {totalRevenue > 0 ? Math.round((totalProfit / totalRevenue) * 100) : 0}%
             </div>
           </div>
-          <div style={{ padding: 20, background: 'rgba(59,130,246,0.04)', borderRadius: 12, border: '1px solid rgba(59,130,246,0.1)' }}>
+          <div style={{ padding: 20, background: 'rgba(242,112,37,0.06)', borderRadius: 12, border: '1px solid rgba(242,112,37,0.18)' }}>
             <div style={{ fontSize: '0.78rem', color: 'var(--jv-text-secondary)', marginBottom: 4 }}>Tasa de Envío</div>
-            <div style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--jv-info)', fontFamily: 'var(--jv-font-heading)' }}>
+            <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#e50601', fontFamily: 'var(--jv-font-heading)' }}>
               {orders.length > 0 ? Math.round((statusCounts.enviado / orders.length) * 100) : 0}%
             </div>
           </div>
