@@ -62,6 +62,15 @@ export default function Home() {
         </div>
 
         <div className="hd-container">
+          {/* Mobile Visual Showcase: High quality hero image displayed prominently on mobile devices */}
+          <div className="hd-mobile-visual">
+            <img
+              src="/hero 2.png"
+              alt="Arenas sanitarias para gatos JV Cats y nutrición felina"
+              className="hd-mobile-img"
+            />
+          </div>
+
           {/* Left Column: Headline, CTAs, Quick Links, Live Stats */}
           <div className="hd-content">
             {/* Live status badge */}
@@ -92,25 +101,27 @@ export default function Home() {
                 <span className="hd-btn-arrow">→</span>
               </Link>
 
-              <Link to="/tienda?cat=Arenas" className="hd-btn hd-btn--secondary" id="hero-btn-arenas">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                </svg>
-                <span>Ver Arenas Sanitarias</span>
-              </Link>
+              <div className="hd-actions-sub">
+                <Link to="/tienda?cat=Arenas" className="hd-btn hd-btn--secondary" id="hero-btn-arenas">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                  </svg>
+                  <span>Ver Arenas</span>
+                </Link>
 
-              <a
-                href="https://wa.me/573182164552?text=%C2%A1Hola!%20Vengo%20de%20jvcatslatienda.com%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20productos"
-                target="_blank"
-                rel="noreferrer"
-                className="hd-btn hd-btn--whatsapp"
-                id="hero-btn-whatsapp"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.957-1.401A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
-                </svg>
-                <span>Asesoría WhatsApp</span>
-              </a>
+                <a
+                  href="https://wa.me/573182164552?text=%C2%A1Hola!%20Vengo%20de%20jvcatslatienda.com%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20los%20productos"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hd-btn hd-btn--whatsapp"
+                  id="hero-btn-whatsapp"
+                >
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.203c.043.072.043.419-.101.824zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.957-1.401A9.957 9.957 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+                  </svg>
+                  <span>WhatsApp</span>
+                </a>
+              </div>
             </div>
 
             {/* Quick-Access Category Pills */}
