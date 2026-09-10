@@ -10,7 +10,7 @@ export default function Footer() {
               style={{ height: 72, marginBottom: 16 }} />
 
             <p style={{ fontSize: '0.88rem', lineHeight: 1.7 }}>
-              Distribuidor autorizado online de JVCats. Productos premium para gatos en Colombia.
+              La tienda oficial de productos premium para gatos en Colombia.
               Directo a la puerta de tu hogar.
             </p>
           </div>
@@ -65,7 +65,7 @@ export default function Footer() {
 
         </div>
         <div className="footer-bottom" style={{ display: 'flex', flexDirection: 'column', gap: 6, alignItems: 'center' }}>
-          <p>© {new Date().getFullYear()} JV Cats La Tienda – Distribuidor Autorizado. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} JV Cats La Tienda. Todos los derechos reservados.</p>
           <p className="footer-credits">
             Desarrollada y creada por{' '}
             <a 

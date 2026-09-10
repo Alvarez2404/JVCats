@@ -76,7 +76,7 @@ export default function Home() {
             {/* Live status badge */}
             <div className="hd-badge">
               <span className="hd-badge-pulse" />
-              <span className="hd-badge-text">DISTRIBUIDOR AUTORIZADO ONLINE · COLOMBIA</span>
+              <span className="hd-badge-text">TIENDA OFICIAL ONLINE · COLOMBIA</span>
             </div>
 
             <h1 className="hd-title">
@@ -184,7 +184,7 @@ export default function Home() {
             <div key={group} className="marquee-content">
               <span>ENVÍOS A TODA COLOMBIA</span>
               <span className="marquee-sep">•</span>
-              <span>DISTRIBUIDOR AUTORIZADO JVCATS</span>
+              <span>TIENDA OFICIAL JVCATS</span>
               <span className="marquee-sep">•</span>
               <span>ARENAS SANITARIAS PREMIUM 100% NATURAL</span>
               <span className="marquee-sep">•</span>
@@ -242,8 +242,8 @@ export default function Home() {
                     <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
                   </svg>
                 ),
-                title: 'Distribuidor Autorizado',
-                desc: 'Somos el canal oficial de venta online de JVCats en Colombia.',
+                title: 'Tienda Oficial Online',
+                desc: 'El canal oficial de venta online de productos JVCats en Colombia.',
               },
             ].map((f, i) => (
               <div key={i} className="feature-card">
@@ -356,9 +356,9 @@ export default function Home() {
         <div className="container">
           <div className="who-inner">
             <div className="who-text">
-              <span className="who-eyebrow">DISTRIBUIDOR AUTORIZADO OFICIAL</span>
+              <span className="who-eyebrow">TIENDA OFICIAL JVCATS</span>
               <h2 className="who-heading">
-                Somos <span>Distribuidor Autorizado Online</span> de JVCats
+                Somos <span>La Tienda Oficial Online</span> de JVCats
               </h2>
               <p className="who-body">
                 En <strong>JV Cats La Tienda</strong> llevamos la arena sanitaria premium, alimentos balanceados
@@ -424,7 +424,7 @@ export default function Home() {
                 <div className="brand-mascot-frame">
                   <img
                     src="/logo-jvcats-clean.png"
-                    alt="JV Cats La Tienda – Distribuidor Autorizado"
+                    alt="JV Cats La Tienda"
                     className="who-logo-clean"
                   />
                 </div>
@@ -434,7 +434,7 @@ export default function Home() {
                   <span className="bc-badge-icon">✓</span>
                   <div>
                     <strong>100% Oficial</strong>
-                    <small>Distribuidor Colombia</small>
+                    <small>Tienda Oficial Colombia</small>
                   </div>
                 </div>
               </div>
@@ -493,7 +493,7 @@ export default function Home() {
       {/* ─── CTA ─── */}
       <section className="page-section cta-section">
         <div className="container" style={{ textAlign: 'center' }}>
-          <div className="cta-badge">DISTRIBUIDOR AUTORIZADO JVCATS</div>
+          <div className="cta-badge">TIENDA OFICIAL JVCATS</div>
           <h2 className="cta-title">¿Listo para consentir a tu gato?</h2>
           <p className="cta-sub">
             Crea tu cuenta en minutos o explora nuestra tienda online.<br />

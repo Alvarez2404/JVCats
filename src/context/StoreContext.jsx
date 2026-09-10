@@ -1,11 +1,50 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { getItem, setItem } from '../utils/storage';
 import { generateOrderId } from '../utils/formatters';
+import { isFirebaseConfigured } from '../services/firebase';
+import {
+  getFirestoreProducts,
+  syncInitialProductsToFirestore,
+  updateFirestoreProduct,
+  getFirestoreOrders,
+  createFirestoreOrder,
+  updateFirestoreOrderStatus
+} from '../services/firestoreService';
 
 const StoreContext = createContext();
 
 export function StoreProvider({ children }) {
   const [productsVer, setProductsVer] = useState(0);
+
+  // Sincronización inicial con Firestore si está configurado
+  useEffect(() => {
+    async function initFirestoreData() {
+      if (!isFirebaseConfigured) return;
+
+      try {
+        const localProducts = getItem('products') || [];
+        // Sembrar productos iniciales si Firestore está vacío
+        await syncInitialProductsToFirestore(localProducts);
+
+        // Si ya hay productos en Firestore, actualizar la caché local
+        const remoteProducts = await getFirestoreProducts();
+        if (remoteProducts && remoteProducts.length > 0) {
+          setItem('products', remoteProducts);
+          setProductsVer(v => v + 1);
+        }
+
+        // Cargar órdenes desde Firestore
+        const remoteOrders = await getFirestoreOrders();
+        if (remoteOrders) {
+          setItem('orders', remoteOrders);
+        }
+      } catch (err) {
+        console.error('Error al sincronizar datos de Firestore en StoreContext:', err);
+      }
+    }
+
+    initFirestoreData();
+  }, []);
 
   function getProducts() {
     return getItem('products') || [];
@@ -18,6 +57,8 @@ export function StoreProvider({ children }) {
       products[idx] = { ...products[idx], ...updates };
       setItem('products', products);
       setProductsVer(v => v + 1);
+      // Sincronizar en Firestore
+      updateFirestoreProduct(productId, updates);
     }
     return products;
   }
@@ -28,13 +69,18 @@ export function StoreProvider({ children }) {
     if (idx !== -1) {
       const currentAvailable = products[idx].available !== false;
       const nextAvailable = !currentAvailable;
-      products[idx] = {
-        ...products[idx],
+      const updates = {
         available: nextAvailable,
         stock: nextAvailable ? (products[idx].stock > 0 ? products[idx].stock : 99) : 0
       };
+      products[idx] = {
+        ...products[idx],
+        ...updates
+      };
       setItem('products', products);
       setProductsVer(v => v + 1);
+      // Sincronizar en Firestore
+      updateFirestoreProduct(productId, updates);
       return products[idx];
     }
     return null;
@@ -58,6 +104,9 @@ export function StoreProvider({ children }) {
     orders.unshift(newOrder);
     setItem('orders', orders);
 
+    // Guardar en Firestore
+    createFirestoreOrder(newOrder);
+
     return newOrder;
   }
 
@@ -66,10 +115,15 @@ export function StoreProvider({ children }) {
     const idx = orders.findIndex(o => o.id === orderId);
     if (idx !== -1) {
       orders[idx].status = newStatus;
+      const updates = { status: newStatus };
       if (newStatus === 'enviado') {
-        orders[idx].shippedAt = new Date().toISOString();
+        const shippedAt = new Date().toISOString();
+        orders[idx].shippedAt = shippedAt;
+        updates.shippedAt = shippedAt;
       }
       setItem('orders', orders);
+      // Actualizar en Firestore
+      updateFirestoreOrderStatus(orderId, updates);
     }
     return orders;
   }
@@ -79,7 +133,16 @@ export function StoreProvider({ children }) {
   }
 
   return (
-    <StoreContext.Provider value={{ getProducts, updateProduct, toggleProductAvailability, productsVer, getOrders, createOrder, updateOrderStatus, getUsers }}>
+    <StoreContext.Provider value={{
+      getProducts,
+      updateProduct,
+      toggleProductAvailability,
+      productsVer,
+      getOrders,
+      createOrder,
+      updateOrderStatus,
+      getUsers
+    }}>
       {children}
     </StoreContext.Provider>
   );

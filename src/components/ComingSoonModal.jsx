@@ -47,8 +47,6 @@ export default function ComingSoonModal() {
           className="cs-logo"
         />
 
-        <div className="cs-badge">Distribuidor Autorizado Online</div>
-
         <h1 className="cs-title">¡Muy pronto estamos listos!</h1>
 
         <p className="cs-subtitle">

@@ -40,11 +40,19 @@ export function initializeStore(products, customers, adminUser, orders) {
       setItem('products', normalized);
     }
   }
-  if (!getItem('users')) {
+  // Reset all transactions from localStorage and leave only the 2 requested users
+  const isResetDone = getItem('reset_clean_v1');
+  if (!isResetDone) {
+    setItem('orders', []);
     const allUsers = [adminUser, ...customers];
     setItem('users', allUsers);
-  }
-  if (!getItem('orders')) {
-    setItem('orders', orders);
+    setItem('reset_clean_v1', true);
+  } else {
+    if (!getItem('users')) {
+      setItem('users', [adminUser, ...customers]);
+    }
+    if (!getItem('orders')) {
+      setItem('orders', []);
+    }
   }
 }
