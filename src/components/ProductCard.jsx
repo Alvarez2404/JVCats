@@ -7,16 +7,19 @@ export default function ProductCard({ product }) {
   const { addToCart } = useCart();
   const [added, setAdded] = useState(false);
 
+  const isAvailable = product.available !== false && (product.stock === undefined || product.stock > 0);
+
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
+    if (!isAvailable) return;
     addToCart(product);
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   };
 
   return (
-    <div className="product-card">
+    <div className={`product-card ${!isAvailable ? 'card-unavailable' : ''}`}>
       <Link to={`/producto/${product.id}`} className="product-image-link">
         <div className="product-image-wrapper">
           <img
@@ -25,9 +28,11 @@ export default function ProductCard({ product }) {
             onError={(e) => { e.target.src = '/logo-jvcats.png'; }}
           />
           {product.featured && <span className="product-badge">Destacado</span>}
-          {product.stock <= 0 && (
-            <span className="product-badge badge-out-of-stock">Agotado</span>
-          )}
+          
+          <span className={`product-status-tag ${isAvailable ? 'status-available' : 'status-unavailable'}`}>
+            <span className="status-dot" />
+            {isAvailable ? 'Disponible' : 'No disponible'}
+          </span>
         </div>
       </Link>
 
@@ -43,7 +48,7 @@ export default function ProductCard({ product }) {
             {product.weight && <div className="product-weight">{product.weight}</div>}
           </div>
 
-          {product.stock > 0 ? (
+          {isAvailable ? (
             <button
               className={`product-add-btn ${added ? 'is-added' : ''}`}
               id={`add-btn-${product.id}`}
@@ -69,7 +74,14 @@ export default function ProductCard({ product }) {
               )}
             </button>
           ) : (
-            <span className="product-out-stock-tag">Agotado</span>
+            <button
+              className="product-add-btn is-unavailable"
+              disabled
+              aria-label={`${product.name} no disponible`}
+              title="Producto no disponible actualmente"
+            >
+              <span>No disponible</span>
+            </button>
           )}
         </div>
       </div>

@@ -23,7 +23,7 @@ export default function Dashboard() {
   const totalRevenue = orders.reduce((s, o) => s + o.total, 0);
   const pendingOrders = orders.filter(o => o.status === 'pagado').length;
   const overdueOrders = orders.filter(o => o.status === 'mora').length;
-  const lowStockProducts = products.filter(p => p.stock <= p.minStock).length;
+  const unavailableProducts = products.filter(p => p.available === false || p.stock <= 0).length;
   const totalClients = users.filter(u => u.role === 'cliente').length;
 
   const navItems = [
@@ -33,6 +33,7 @@ export default function Dashboard() {
     { path: '/admin/productos', label: 'Productos', icon: '' },
     { path: '/admin/clientes', label: 'Clientes', icon: '' },
     { path: '/admin/reportes', label: 'Reportes', icon: '' },
+    { path: '/admin/pagos', label: 'Pagos Wompi', icon: '' },
   ];
 
   const handlePromote = () => {
@@ -143,19 +144,23 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              {/* Low Stock Alerts */}
+              {/* Unavailable Products Alerts */}
               <div className="chart-container">
-                <h3>Alertas de Stock Bajo ({lowStockProducts})</h3>
+                <div className="flex-between" style={{ marginBottom: 12 }}>
+                  <h3 style={{ margin: 0 }}>Productos No Disponibles ({unavailableProducts})</h3>
+                  <Link to="/admin/inventario" className="btn btn-sm btn-outline" style={{ fontSize: '0.78rem' }}>Gestionar</Link>
+                </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 200, overflowY: 'auto' }}>
-                  {products.filter(p => p.stock <= p.minStock).map(p => (
+                  {products.filter(p => p.available === false || p.stock <= 0).map(p => (
                     <div key={p.id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 12px', background: 'rgba(239,68,68,0.04)', borderRadius: 8, fontSize: '0.85rem' }}>
                       <span style={{ fontWeight: 600 }}>{p.name}</span>
-                      <span className={`badge ${p.stock === 0 ? 'badge-danger' : 'badge-warning'}`}>
-                        {p.stock === 0 ? 'Agotado' : `${p.stock} uds`}
+                      <span className="product-status-tag status-unavailable" style={{ fontSize: '0.75rem', padding: '3px 8px' }}>
+                        <span className="status-dot" />
+                        No disponible
                       </span>
                     </div>
                   ))}
-                  {lowStockProducts === 0 && <p style={{ color: 'var(--jv-text-light)', fontSize: '0.88rem' }}>Todos los productos tienen stock suficiente</p>}
+                  {unavailableProducts === 0 && <p style={{ color: 'var(--jv-text-light)', fontSize: '0.88rem', margin: 0 }}>Todos los productos están disponibles en la tienda</p>}
                 </div>
               </div>
             </div>

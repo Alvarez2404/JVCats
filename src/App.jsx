@@ -33,6 +33,7 @@ import OrdersPage from './pages/admin/Orders';
 import ProductsPage from './pages/admin/Products';
 import CustomersPage from './pages/admin/Customers';
 import ReportsPage from './pages/admin/Reports';
+import PaymentSettings from './pages/admin/PaymentSettings';
 
 // Auto Scroll to top on route change
 function ScrollToTop() {
@@ -120,6 +121,7 @@ export default function App() {
                   <Route path="productos" element={<ProductsPage />} />
                   <Route path="clientes" element={<CustomersPage />} />
                   <Route path="reportes" element={<ReportsPage />} />
+                  <Route path="pagos" element={<PaymentSettings />} />
                 </Route>
 
                 {/* Fallback Route */}

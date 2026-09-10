@@ -282,4 +282,9 @@ const products = [
   }
 ];
 
-export default products;
+const initialProducts = products.map(p => ({
+  ...p,
+  available: p.available !== undefined ? p.available : true
+}));
+
+export default initialProducts;

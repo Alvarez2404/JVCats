@@ -24,8 +24,21 @@ export function removeItem(key) {
 
 // Initialize store data if not already present
 export function initializeStore(products, customers, adminUser, orders) {
-  if (!getItem('products')) {
+  const existingProducts = getItem('products');
+  if (!existingProducts) {
     setItem('products', products);
+  } else {
+    let changed = false;
+    const normalized = existingProducts.map(p => {
+      if (p.available === undefined) {
+        changed = true;
+        return { ...p, available: p.stock > 0 };
+      }
+      return p;
+    });
+    if (changed) {
+      setItem('products', normalized);
+    }
   }
   if (!getItem('users')) {
     const allUsers = [adminUser, ...customers];

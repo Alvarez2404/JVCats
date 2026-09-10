@@ -61,7 +61,7 @@ export default function Home() {
           </span>
         </div>
 
-        <div className="container hd-container">
+        <div className="hd-container">
           {/* Left Column: Headline, CTAs, Quick Links, Live Stats */}
           <div className="hd-content">
             {/* Live status badge */}
@@ -152,60 +152,8 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* Right Column: Hero Visual featuring the Transparent Logo with Floating Badges */}
-          <div className="hd-visual">
-            <div className="hd-visual-halo" />
-
-            <div className="hd-logo-stage">
-              <img
-                src="/logo-jvcats.png"
-                alt="JV Cats La Tienda – Distribuidor Autorizado"
-                className="hd-main-logo"
-              />
-
-              {/* Floating Dynamic Badges (Clean SVG Icons) */}
-              <div className="hd-float-card hd-float-card--top">
-                <span className="hd-float-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="#fac20d">
-                    <polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" />
-                  </svg>
-                </span>
-                <div>
-                  <strong>Distribuidor Oficial</strong>
-                  <small>Garantía de fábrica</small>
-                </div>
-              </div>
-
-              <div className="hd-float-card hd-float-card--left">
-                <span className="hd-float-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e50601" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="1" y="3" width="15" height="13"></rect>
-                    <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
-                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
-                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
-                  </svg>
-                </span>
-                <div>
-                  <strong>Envíos Nacionales</strong>
-                  <small>A todo el país</small>
-                </div>
-              </div>
-
-              <div className="hd-float-card hd-float-card--right">
-                <span className="hd-float-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f27025" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                  </svg>
-                </span>
-                <div>
-                  <strong>Bienestar Total</strong>
-                  <small>Máximo control de olor</small>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
+        
 
         {/* Dynamic Wave Divider */}
         <div className="hd-wave">
@@ -377,8 +325,10 @@ export default function Home() {
           </div>
 
           <div className="products-grid">
-            {filteredProducts.map((p) => (
-              <ProductCard key={p.id} product={p} />
+            {filteredProducts.map((p, i) => (
+              <div key={p.id} className="store-card-reveal" style={{ animationDelay: `${i * 70}ms` }}>
+                <ProductCard product={p} />
+              </div>
             ))}
           </div>
 
@@ -390,12 +340,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── WHO WE ARE BAND (FEATURING CLEAN TRANSPARENT LOGO, NO EMOJIS) ─── */}
+      {/* ─── WHO WE ARE BAND (BRAND GEOMETRY CIRCLES, INSPIRED BY BRAND MANUAL) ─── */}
       <section className="who-band">
         <div className="container">
           <div className="who-inner">
             <div className="who-text">
-              <p className="who-eyebrow">¿QUIÉNES SOMOS?</p>
+              <span className="who-eyebrow">DISTRIBUIDOR AUTORIZADO OFICIAL</span>
               <h2 className="who-heading">
                 Somos <span>Distribuidor Autorizado Online</span> de JVCats
               </h2>
@@ -408,7 +358,7 @@ export default function Home() {
               <div className="who-bullets">
                 <div className="who-bullet-item">
                   <span className="who-bullet-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fac20d" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
                     </svg>
                   </span>
@@ -416,7 +366,7 @@ export default function Home() {
                 </div>
                 <div className="who-bullet-item">
                   <span className="who-bullet-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fac20d" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                     </svg>
                   </span>
@@ -424,7 +374,7 @@ export default function Home() {
                 </div>
                 <div className="who-bullet-item">
                   <span className="who-bullet-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fac20d" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </span>
@@ -433,18 +383,50 @@ export default function Home() {
               </div>
 
               <div style={{ marginTop: 32 }}>
-                <Link to="/tienda" className="btn btn-accent btn-lg" id="who-shop-btn">
+                <Link to="/tienda" className="btn btn-primary btn-lg" id="who-shop-btn">
                   Explorar Catálogo →
                 </Link>
               </div>
             </div>
 
-            <div className="who-logo-wrapper">
-              <img
-                src="/logo-jvcats.png"
-                alt="JV Cats La Tienda – Distribuidor Autorizado"
-                className="who-logo-clean"
-              />
+            <div className="who-visual-stage">
+              {/* Overlapping Brand Circles (Inspirado en el manual de marca) */}
+              <div className="brand-circles-container">
+                {/* Outer rotating decorative dashed orbit */}
+                <div className="brand-circle-orbit" />
+                
+                {/* Large Brand Yellow Circle */}
+                <div className="brand-circle brand-circle--yellow" />
+                
+                {/* Overlapping Brand Orange Circle */}
+                <div className="brand-circle brand-circle--orange" />
+                
+                {/* Overlapping Brand Red / Wine Arc Circle */}
+                <div className="brand-circle brand-circle--red" />
+
+                {/* Floating micro accent bubbles */}
+                <span className="brand-bubble bubble-1" />
+                <span className="brand-bubble bubble-2" />
+                <span className="brand-bubble bubble-3" />
+
+                {/* Central Brand Mascot Artwork */}
+                <div className="brand-mascot-frame">
+                  <img
+                    src="/logo-jvcats-clean.png"
+                    alt="JV Cats La Tienda – Distribuidor Autorizado"
+                    className="who-logo-clean"
+                  />
+                </div>
+
+                {/* Floating Authenticity Badge */}
+                <div className="brand-circle-badge">
+                  <span className="bc-badge-icon">✓</span>
+                  <div>
+                    <strong>100% Oficial</strong>
+                    <small>Distribuidor Colombia</small>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -454,10 +436,10 @@ export default function Home() {
       <section className="page-section testimonials-section">
         <div className="container">
           <div className="section-header">
-            <span className="section-eyebrow" style={{ color: '#fac20d' }}>Comunidad Felina</span>
-            <h2 style={{ color: '#fff' }}>Lo que dicen nuestros clientes</h2>
-            <p style={{ color: 'rgba(255,255,255,0.85)' }}>Miles de hogares y gatos felices en toda Colombia</p>
-            <div className="accent-line" style={{ background: '#fac20d' }} />
+            <span className="section-eyebrow">Comunidad Felina</span>
+            <h2>Lo que dicen nuestros clientes</h2>
+            <p>Miles de hogares y gatos felices en toda Colombia</p>
+            <div className="accent-line" />
           </div>
 
           <div className="grid-3">

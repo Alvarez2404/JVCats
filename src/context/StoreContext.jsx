@@ -1,10 +1,11 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { getItem, setItem } from '../utils/storage';
 import { generateOrderId } from '../utils/formatters';
 
 const StoreContext = createContext();
 
 export function StoreProvider({ children }) {
+  const [productsVer, setProductsVer] = useState(0);
 
   function getProducts() {
     return getItem('products') || [];
@@ -16,8 +17,27 @@ export function StoreProvider({ children }) {
     if (idx !== -1) {
       products[idx] = { ...products[idx], ...updates };
       setItem('products', products);
+      setProductsVer(v => v + 1);
     }
     return products;
+  }
+
+  function toggleProductAvailability(productId) {
+    const products = getProducts();
+    const idx = products.findIndex(p => p.id === productId);
+    if (idx !== -1) {
+      const currentAvailable = products[idx].available !== false;
+      const nextAvailable = !currentAvailable;
+      products[idx] = {
+        ...products[idx],
+        available: nextAvailable,
+        stock: nextAvailable ? (products[idx].stock > 0 ? products[idx].stock : 99) : 0
+      };
+      setItem('products', products);
+      setProductsVer(v => v + 1);
+      return products[idx];
+    }
+    return null;
   }
 
   function getOrders() {
@@ -26,26 +46,17 @@ export function StoreProvider({ children }) {
 
   function createOrder(orderData) {
     const orders = getOrders();
+    const initialStatus = orderData.status || 'pagado';
     const newOrder = {
-      id: generateOrderId(),
+      id: orderData.id || generateOrderId(),
       ...orderData,
-      status: 'pagado',
+      status: initialStatus,
       createdAt: new Date().toISOString(),
-      paidAt: new Date().toISOString(),
+      paidAt: initialStatus === 'pendiente_pago' ? null : new Date().toISOString(),
       shippedAt: null
     };
     orders.unshift(newOrder);
     setItem('orders', orders);
-
-    // Deduct stock
-    const products = getProducts();
-    orderData.items.forEach(item => {
-      const pIdx = products.findIndex(p => p.id === item.productId);
-      if (pIdx !== -1) {
-        products[pIdx].stock = Math.max(0, products[pIdx].stock - item.quantity);
-      }
-    });
-    setItem('products', products);
 
     return newOrder;
   }
@@ -68,7 +79,7 @@ export function StoreProvider({ children }) {
   }
 
   return (
-    <StoreContext.Provider value={{ getProducts, updateProduct, getOrders, createOrder, updateOrderStatus, getUsers }}>
+    <StoreContext.Provider value={{ getProducts, updateProduct, toggleProductAvailability, productsVer, getOrders, createOrder, updateOrderStatus, getUsers }}>
       {children}
     </StoreContext.Provider>
   );

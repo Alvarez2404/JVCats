@@ -67,8 +67,15 @@ export default function Orders() {
                 <div className="flex-between" style={{ flexWrap: 'wrap', gap: 12, marginBottom: 16 }}>
                   <div>
                     <div style={{ fontWeight: 700, fontSize: '1.05rem' }}>{order.id}</div>
-                    <div style={{ fontSize: '0.82rem', color: 'var(--jv-text-secondary)' }}>
-                      {formatDate(order.createdAt)} · {order.paymentMethod}
+                    <div style={{ fontSize: '0.82rem', color: 'var(--jv-text-secondary)', display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap', marginTop: 3 }}>
+                      <span>{formatDate(order.createdAt)}</span>
+                      <span>•</span>
+                      <strong style={{ color: 'var(--jv-primary)' }}>{order.paymentMethod}</strong>
+                      {order.wompiTransactionId && (
+                        <span style={{ background: '#f0fdf4', color: '#166534', border: '1px solid #bbf7d0', padding: '2px 8px', borderRadius: 6, fontSize: '0.75rem', fontWeight: 600 }}>
+                          ID Wompi: {order.wompiTransactionId}
+                        </span>
+                      )}
                     </div>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>

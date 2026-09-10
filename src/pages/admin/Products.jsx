@@ -17,16 +17,20 @@ export default function Products() {
 
   const startEdit = (product) => {
     setEditing(product.id);
-    setForm({ ...product });
+    setForm({
+      ...product,
+      available: product.available !== false && (product.stock === undefined || product.stock > 0)
+    });
   };
 
   const saveEdit = () => {
+    const isAvail = form.available !== false;
     const updated = updateProduct(editing, {
       name: form.name,
       price: Number(form.price),
       cost: Number(form.cost),
-      stock: Number(form.stock),
-      minStock: Number(form.minStock),
+      available: isAvail,
+      stock: isAvail ? (form.stock > 0 ? Number(form.stock) : 99) : 0,
       category: form.category,
       subcategory: form.subcategory,
       description: form.description,
@@ -66,62 +70,69 @@ export default function Products() {
             </div>
 
             <div className="modal-body">
-              <div className="form-group">
-                <label>Imagen (URL)</label>
-                <input className="form-input" value={form.image} onChange={e => setForm({ ...form, image: e.target.value })} />
-                {form.image && <img src={form.image} alt="Preview" style={{ height: 80, marginTop: 8, objectFit: 'contain' }} />}
-              </div>
-              <div className="form-group">
-                <label>Nombre</label>
-                <input className="form-input" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
-              </div>
-              <div className="grid-2">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                 <div className="form-group">
-                  <label>Categoría</label>
-                  <select className="form-select" value={form.category} onChange={e => setForm({ ...form, category: e.target.value })}>
-                    <option value="Arenas">Arenas</option>
-                    <option value="Comida">Comida</option>
+                  <label>Imagen (URL)</label>
+                  <input className="form-input" value={form.image} onChange={e => setForm({ ...form, image: e.target.value })} />
+                  {form.image && <img src={form.image} alt="Preview" style={{ height: 80, marginTop: 8, objectFit: 'contain' }} />}
+                </div>
+                <div className="form-group">
+                  <label>Nombre</label>
+                  <input className="form-input" value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} />
+                </div>
+                <div className="grid-2">
+                  <div className="form-group">
+                    <label>Categoría</label>
+                    <select className="form-select" value={form.category} onChange={e => setForm({ ...form, category: e.target.value })}>
+                      <option value="Arenas">Arenas</option>
+                      <option value="Comida">Comida</option>
+                    </select>
+                  </div>
+                  <div className="form-group">
+                    <label>Peso/Presentación</label>
+                    <input className="form-input" value={form.weight} onChange={e => setForm({ ...form, weight: e.target.value })} />
+                  </div>
+                </div>
+                <div className="grid-3">
+                  <div className="form-group">
+                    <label>Precio de Venta (COP)</label>
+                    <input className="form-input" type="number" value={form.price} onChange={e => setForm({ ...form, price: e.target.value })} />
+                  </div>
+                  <div className="form-group">
+                    <label>Costo (COP)</label>
+                    <input className="form-input" type="number" value={form.cost} onChange={e => setForm({ ...form, cost: e.target.value })} />
+                  </div>
+                  <div className="form-group">
+                    <label>Margen</label>
+                    <div style={{ padding: '12px 16px', background: 'var(--jv-bg)', borderRadius: 12, fontWeight: 700, color: 'var(--jv-success)', fontSize: '1.1rem', textAlign: 'center' }}>
+                      {calcMargin(Number(form.price), Number(form.cost))}%
+                    </div>
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label>Disponibilidad en Tienda</label>
+                  <select
+                    className="form-select"
+                    value={form.available ? 'true' : 'false'}
+                    onChange={e => setForm({ ...form, available: e.target.value === 'true' })}
+                    style={{
+                      color: form.available ? 'var(--jv-success)' : 'var(--jv-danger)',
+                      fontWeight: 700
+                    }}
+                  >
+                    <option value="true">● Disponible (Visible y comprable)</option>
+                    <option value="false">● No disponible (Deshabilitado en tienda)</option>
                   </select>
                 </div>
                 <div className="form-group">
-                  <label>Peso/Presentación</label>
-                  <input className="form-input" value={form.weight} onChange={e => setForm({ ...form, weight: e.target.value })} />
+                  <label>Descripción</label>
+                  <textarea className="form-input" rows={3} value={form.description}
+                    onChange={e => setForm({ ...form, description: e.target.value })} style={{ resize: 'vertical' }} />
                 </div>
-              </div>
-              <div className="grid-3">
-                <div className="form-group">
-                  <label>Precio de Venta (COP)</label>
-                  <input className="form-input" type="number" value={form.price} onChange={e => setForm({ ...form, price: e.target.value })} />
+                <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
+                  <button className="btn btn-outline" onClick={cancelEdit}>Cancelar</button>
+                  <button className="btn btn-primary" onClick={saveEdit}>Guardar Cambios</button>
                 </div>
-                <div className="form-group">
-                  <label>Costo (COP)</label>
-                  <input className="form-input" type="number" value={form.cost} onChange={e => setForm({ ...form, cost: e.target.value })} />
-                </div>
-                <div className="form-group">
-                  <label>Margen</label>
-                  <div style={{ padding: '12px 16px', background: 'var(--jv-bg)', borderRadius: 12, fontWeight: 700, color: 'var(--jv-success)', fontSize: '1.1rem', textAlign: 'center' }}>
-                    {calcMargin(Number(form.price), Number(form.cost))}%
-                  </div>
-                </div>
-              </div>
-              <div className="grid-2">
-                <div className="form-group">
-                  <label>Stock</label>
-                  <input className="form-input" type="number" value={form.stock} onChange={e => setForm({ ...form, stock: e.target.value })} />
-                </div>
-                <div className="form-group">
-                  <label>Stock Mínimo</label>
-                  <input className="form-input" type="number" value={form.minStock} onChange={e => setForm({ ...form, minStock: e.target.value })} />
-                </div>
-              </div>
-              <div className="form-group">
-                <label>Descripción</label>
-                <textarea className="form-input" rows={3} value={form.description}
-                  onChange={e => setForm({ ...form, description: e.target.value })} style={{ resize: 'vertical' }} />
-              </div>
-              <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end' }}>
-                <button className="btn btn-outline" onClick={cancelEdit}>Cancelar</button>
-                <button className="btn btn-primary" onClick={saveEdit}>Guardar Cambios</button>
               </div>
             </div>
           </div>
@@ -138,38 +149,42 @@ export default function Products() {
               <th>Precio</th>
               <th>Costo</th>
               <th>Margen</th>
-              <th>Stock</th>
+              <th>Disponibilidad</th>
               <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {filtered.map(p => (
-              <tr key={p.id}>
-                <td>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <img src={p.image} alt={p.name} style={{ width: 44, height: 44, borderRadius: 8, objectFit: 'contain', background: '#f8fafc' }} />
-                    <div>
-                      <div style={{ fontWeight: 600, fontSize: '0.88rem' }}>{p.name}</div>
-                      <div style={{ fontSize: '0.75rem', color: 'var(--jv-text-light)' }}>{p.weight}</div>
+            {filtered.map(p => {
+              const isAvail = p.available !== false && (p.stock === undefined || p.stock > 0);
+              return (
+                <tr key={p.id}>
+                  <td>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                      <img src={p.image} alt={p.name} onError={(e) => { e.target.src = '/logo-jvcats.png'; }} style={{ width: 44, height: 44, borderRadius: 8, objectFit: 'contain', background: '#f8fafc' }} />
+                      <div>
+                        <div style={{ fontWeight: 600, fontSize: '0.88rem' }}>{p.name}</div>
+                        <div style={{ fontSize: '0.75rem', color: 'var(--jv-text-light)' }}>{p.weight}</div>
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td><span className="badge badge-primary">{p.category}</span></td>
-                <td style={{ fontWeight: 700 }}>{formatCOP(p.price)}</td>
-                <td style={{ color: 'var(--jv-text-secondary)' }}>{formatCOP(p.cost)}</td>
-                <td>
-                  <span style={{ fontWeight: 700, color: 'var(--jv-success)' }}>{calcMargin(p.price, p.cost)}%</span>
-                </td>
-                <td>
-                  <span className={`badge ${p.stock === 0 ? 'badge-danger' : p.stock <= p.minStock ? 'badge-warning' : 'badge-success'}`}>
-                    {p.stock}
-                  </span>
-                </td>
-                <td>
-                  <button className="btn btn-sm btn-outline" onClick={() => startEdit(p)}>Editar</button>
-                </td>
-              </tr>
-            ))}
+                  </td>
+                  <td><span className="badge badge-primary">{p.category}</span></td>
+                  <td style={{ fontWeight: 700 }}>{formatCOP(p.price)}</td>
+                  <td style={{ color: 'var(--jv-text-secondary)' }}>{formatCOP(p.cost)}</td>
+                  <td>
+                    <span style={{ fontWeight: 700, color: 'var(--jv-success)' }}>{calcMargin(p.price, p.cost)}%</span>
+                  </td>
+                  <td>
+                    <span className={`product-status-tag ${isAvail ? 'status-available' : 'status-unavailable'}`} style={{ fontSize: '0.78rem', padding: '4px 10px' }}>
+                      <span className="status-dot" />
+                      {isAvail ? 'Disponible' : 'No disponible'}
+                    </span>
+                  </td>
+                  <td>
+                    <button className="btn btn-sm btn-outline" onClick={() => startEdit(p)}>Editar</button>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -178,4 +193,3 @@ export default function Products() {
     </div>
   );
 }
-

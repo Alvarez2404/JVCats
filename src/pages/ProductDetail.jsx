@@ -65,31 +65,43 @@ export default function ProductDetail() {
             {product.description}
           </p>
 
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 8 }}>
-            <span style={{ fontSize: '0.85rem', color: product.stock > 0 ? 'var(--jv-success)' : 'var(--jv-danger)', fontWeight: 600 }}>
-              {product.stock > 0 ? `${product.stock} en stock` : 'Agotado'}
-            </span>
-          </div>
+          {(() => {
+            const isAvailable = product.available !== false && (product.stock === undefined || product.stock > 0);
+            return (
+              <>
+                <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 20 }}>
+                  <span className={`product-status-tag ${isAvailable ? 'status-available' : 'status-unavailable'}`} style={{ fontSize: '0.88rem', padding: '6px 14px' }}>
+                    <span className="status-dot" />
+                    {isAvailable ? 'Disponible' : 'No disponible'}
+                  </span>
+                </div>
 
-          {product.stock > 0 && (
-            <>
-              <div className="qty-selector">
-                <span style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--jv-text-secondary)' }}>Cantidad:</span>
-                <button onClick={() => setQty(Math.max(1, qty - 1))}>−</button>
-                <span className="qty-value">{qty}</span>
-                <button onClick={() => setQty(Math.min(product.stock, qty + 1))}>+</button>
-              </div>
+                {isAvailable ? (
+                  <>
+                    <div className="qty-selector">
+                      <span style={{ fontSize: '0.88rem', fontWeight: 600, color: 'var(--jv-text-secondary)' }}>Cantidad:</span>
+                      <button onClick={() => setQty(Math.max(1, qty - 1))}>−</button>
+                      <span className="qty-value">{qty}</span>
+                      <button onClick={() => setQty(qty + 1)}>+</button>
+                    </div>
 
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                <button className="btn btn-accent btn-lg" onClick={handleAdd} style={{ flex: 1 }}>
-                  {added ? '¡Agregado!' : 'Agregar al Carrito'}
-                </button>
-                <Link to="/checkout" className="btn btn-primary btn-lg" onClick={() => addToCart(product, qty)} style={{ flex: 1 }}>
-                  Comprar Ahora
-                </Link>
-              </div>
-            </>
-          )}
+                    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                      <button className="btn btn-accent btn-lg" onClick={handleAdd} style={{ flex: 1 }}>
+                        {added ? '¡Agregado!' : 'Agregar al Carrito'}
+                      </button>
+                      <Link to="/checkout" className="btn btn-primary btn-lg" onClick={() => addToCart(product, qty)} style={{ flex: 1 }}>
+                        Comprar Ahora
+                      </Link>
+                    </div>
+                  </>
+                ) : (
+                  <div style={{ padding: '16px 20px', background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: 12, color: 'var(--jv-danger)', fontWeight: 600, fontSize: '0.92rem', marginBottom: 20 }}>
+                    Este producto no se encuentra disponible actualmente.
+                  </div>
+                )}
+              </>
+            );
+          })()}
 
           {/* Extra Info */}
           <div style={{ marginTop: 32, display: 'flex', flexDirection: 'column', gap: 12 }}>
