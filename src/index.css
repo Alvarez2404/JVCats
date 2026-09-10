@@ -1045,16 +1045,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-mobile-toggle {
   display: none;
-  width: 44px;
-  height: 44px;
-  border-radius: var(--jv-radius-sm);
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
-  font-weight: 700;
   color: #e50601;
-  background: rgba(242, 112, 37, 0.1);
-  border: 1px solid rgba(242, 112, 37, 0.2);
+  background: rgba(229, 6, 1, 0.08);
+  border: 1.5px solid rgba(229, 6, 1, 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.navbar-mobile-toggle:hover {
+  background: rgba(229, 6, 1, 0.15);
+  border-color: #e50601;
+  transform: scale(1.05);
 }
 
 /* ---------- Footer (BLANCO) ---------- */
@@ -1870,12 +1877,11 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 768px) {
   .container { padding: 0 var(--jv-space-sm); }
-  .navbar-top { font-size: 0.72rem; }
   .navbar-logo img { height: 34px; }
   .navbar-user-btn { padding: 6px 10px; font-size: 0.78rem; }
   .navbar-cart-btn { width: 38px; height: 38px; }
   .navbar-links { display: none; }
-  .navbar-mobile-toggle { display: flex; padding: 6px 10px; font-size: 0.85rem; }
+  .navbar-mobile-toggle { display: flex; width: 38px; height: 38px; padding: 0; }
   .grid-2, .grid-3 { grid-template-columns: 1fr; }
   .grid-4 { grid-template-columns: repeat(2, 1fr); }
   .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }

@@ -24,19 +24,6 @@ export default function Navbar() {
   return (
     <>
       <nav className="navbar">
-        <div className="navbar-top">
-          <div className="container flex-between">
-            <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
-              <a href="tel:3182164552">Teléfono: 318 216 4552</a>
-              <a href="mailto:contacto@jvcats.com">Email: contacto@jvcats.com</a>
-            </div>
-            <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-              <a href="https://www.instagram.com/jvcatslatienda/" target="_blank" rel="noreferrer">Instagram</a>
-              <a href="https://www.facebook.com/share/1Gzwkh2ueM/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Facebook</a>
-            </div>
-          </div>
-        </div>
-
         <div className="navbar-main">
           <div className="container flex-between">
             <div style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
@@ -101,7 +88,17 @@ export default function Navbar() {
                 <Link to="/login" className="btn btn-primary btn-sm">Iniciar Sesión</Link>
               )}
 
-              <button className="navbar-mobile-toggle" onClick={() => setMobileOpen(true)} aria-label="Menu">Menu</button>
+              <button 
+                className="navbar-mobile-toggle" 
+                onClick={() => setMobileOpen(true)} 
+                aria-label="Abrir menú de navegación"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <line x1="3" y1="12" x2="21" y2="12"></line>
+                  <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+              </button>
             </div>
           </div>
         </div>
@@ -112,9 +109,27 @@ export default function Navbar() {
         <>
           <div className="mobile-nav-overlay" onClick={() => setMobileOpen(false)} />
           <div className="mobile-nav">
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 24 }}>
-              <img src="/logo-jvcats.png" alt="JV Cats La Tienda" style={{ height: 48 }} />
-              <button onClick={() => setMobileOpen(false)} style={{ fontSize: '1.4rem' }}>Cerrar</button>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24 }}>
+              <img src="/logo-jvcats.png" alt="JV Cats La Tienda" style={{ height: 44 }} />
+              <button 
+                onClick={() => setMobileOpen(false)} 
+                aria-label="Cerrar menú"
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center',
+                  width: 36, 
+                  height: 36, 
+                  borderRadius: '50%',
+                  background: 'rgba(0,0,0,0.06)',
+                  color: '#1e293b'
+                }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
             </div>
             <Link to="/" onClick={() => setMobileOpen(false)} className={isActive('/')}>Inicio</Link>
             <Link to="/tienda" onClick={() => setMobileOpen(false)} className={isActive('/tienda')}>Tienda</Link>
