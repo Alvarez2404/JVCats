@@ -28,11 +28,6 @@ export default function ProductCard({ product }) {
             onError={(e) => { e.target.src = '/logo-jvcats.png'; }}
           />
           {product.featured && <span className="product-badge">Destacado</span>}
-          
-          <span className={`product-status-tag ${isAvailable ? 'status-available' : 'status-unavailable'}`}>
-            <span className="status-dot" />
-            {isAvailable ? 'Disponible' : 'No disponible'}
-          </span>
         </div>
       </Link>
 
@@ -42,6 +37,7 @@ export default function ProductCard({ product }) {
           <div className="product-name" title={product.name}>{product.name}</div>
         </Link>
         
+        {/* Fila de precio y botón con icono de carrito */}
         <div className="product-price-row">
           <div className="product-price-col">
             <div className="product-price">{formatCOP(product.price)}</div>
@@ -50,39 +46,43 @@ export default function ProductCard({ product }) {
 
           {isAvailable ? (
             <button
-              className={`product-add-btn ${added ? 'is-added' : ''}`}
+              className={`product-cart-btn ${added ? 'is-added' : ''}`}
               id={`add-btn-${product.id}`}
               onClick={handleAddToCart}
               aria-label={`Agregar ${product.name} al carrito`}
+              title="Agregar al carrito"
             >
               {added ? (
-                <>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                  <span>¡Listo!</span>
-                </>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
               ) : (
-                <>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="9" cy="21" r="1" />
-                    <circle cx="20" cy="21" r="1" />
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                  </svg>
-                  <span>Agregar</span>
-                </>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="9" cy="21" r="1" />
+                  <circle cx="20" cy="21" r="1" />
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                </svg>
               )}
             </button>
           ) : (
             <button
-              className="product-add-btn is-unavailable"
+              className="product-cart-btn is-disabled"
               disabled
-              aria-label={`${product.name} no disponible`}
+              aria-label="No disponible"
               title="Producto no disponible actualmente"
             >
-              <span>No disponible</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="4.93" y1="4.93" x2="19.07" y2="19.07" />
+              </svg>
             </button>
           )}
+        </div>
+
+        {/* Indicador de Disponibilidad en la posición donde estaba el botón */}
+        <div className={`product-card-availability ${isAvailable ? 'is-available' : 'is-unavailable'}`}>
+          <span className="status-dot" />
+          <span>{isAvailable ? 'Disponible' : 'No disponible'}</span>
         </div>
       </div>
     </div>
